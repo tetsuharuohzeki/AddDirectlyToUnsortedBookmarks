@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+<Description about="urn:mozilla:install-manifest">
+
+	<!-- Extension Identifier -->
+	<em:id>{3570febd-46e7-46a8-92d5-fb2270b32b36}</em:id>
+	<em:version>0.1</em:version>
+	<em:type>2</em:type>
+
+	<!-- Metadata -->
+	<em:name>Add Directly to Unsorted Bookmarks</em:name>
+	<em:description>Add menu to bookmark directly to "Unsorted Bookmarks" in Places.</em:description>
+	<em:creator>saneyuki</em:creator>
+
+	<!-- Target Application -->
+	<!-- Firefox -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+			<em:minVersion>3.5</em:minVersion>
+			<em:maxVersion>3.7a1pre</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+	<!-- Localize -->
+	<em:localized>
+		<Description>
+			<em:locale>ja</em:locale>
+			<em:name>Add Directly to Unsorted Bookmarks</em:name>
+			<em:description>Places の"未整理のブックマーク"に直接ブックマークするメニューを追加します。</em:description>
+		</Description>
+	</em:localized>
+
+</Description>
+</RDF>

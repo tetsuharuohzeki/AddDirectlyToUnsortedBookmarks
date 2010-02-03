@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://AddDToUnsortBkm/locale/AddDToUnsortBkm.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         id="AddDToUnsortBkm-multiple">
+
+	<script type="application/javascript" src="chrome://AddDToUnsortBkm/content/browserOverlay.js"></script>
+	<script type="application/javascript" src="chrome://AddDToUnsortBkm/content/multipletabOverlay.js"></script>
+
+	<menupopup id="multipletab-tabcontext-menu-template">
+		<menuitem id="AddDToUnsortBkm-tabContext-saveTab-multipletab"
+		          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
+		          oncommand="AddDToUnsortBkm.saveThisTab();"
+		          multipletab-insertafter="document.getElementById('context_bookmarkAllTabs')"/>
+		<menuseparator id="AddDToUnsortBkm_separator-multipletab"
+		               multipletab-insertafter="document.getElementById('context_bookmarkAllTabs').nextSibling"/>
+	</menupopup>
+
+	<menupopup id="multipletab-selection-menu">
+		<menuitem id="AddDToUnsortBkm-tabContext-saveSelected-multipletab-selection"
+		          label="&AddDToUnsortBkm.tab.multipletab.saveSelected;"
+		          oncommand="AddDToUnsortBkmMultipleTab.saveSelectedTabs();"/>
+	</menupopup>
+
+
+</overlay>

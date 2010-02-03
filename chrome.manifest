@@ -1,0 +1,10 @@
+# Defines the package
+content  AddDToUnsortBkm                jar:chrome/adddtounsortbkm.jar!/content/
+
+# Overlay
+overlay chrome://browser/content/browser.xul    chrome://AddDToUnsortBkm/content/browserOverlay.xul
+overlay chrome://multipletab/content/multipletab.xul   chrome://AddDToUnsortBkm/content/multipletabOverlay.xul
+
+# Locale
+locale   AddDToUnsortBkm   en-US       jar:chrome/adddtounsortbkm.jar!/locale/en-US/
+locale   AddDToUnsortBkm   ja          jar:chrome/adddtounsortbkm.jar!/locale/ja/

@@ -1,0 +1,7 @@
+<!ENTITY AddDToUnsortBkm.shortName                      "&quot;未整理&quot;">
+
+<!ENTITY AddDToUnsortBkm.tab.context.saveThisTab        "このタブを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.tab.multipletab.saveSelected   "選択しているタブを&AddDToUnsortBkm.shortName;にブックマーク">
+
+<!ENTITY AddDToUnsortBkm.content.context.saveLink       "このリンクを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.content.context.savePage       "このページを&AddDToUnsortBkm.shortName;にブックマーク">

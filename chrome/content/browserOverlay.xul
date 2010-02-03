@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://AddDToUnsortBkm/locale/AddDToUnsortBkm.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         id="AddDToUnsortBkm-overlay">
+
+	<script type="application/javascript" src="chrome://AddDToUnsortBkm/content/browserOverlay.js"></script>
+
+	<popupset id="mainPopupSet">
+		<menupopup  id="AddDToUnsortBkm-tabContext">
+			<menuitem id="AddDToUnsortBkm-tabContext-saveTab"
+			          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
+			          oncommand="AddDToUnsortBkm.saveThisTab();"/>
+		</menupopup>
+	</popupset>
+
+	<popup id="contentAreaContextMenu">
+		<menuitem id="AddDToUnsortBkm-contentContext-saveLink"
+		          label="&AddDToUnsortBkm.content.context.saveLink;"
+		          insertafter="context-bookmarklink"
+		          oncommand="AddDToUnsortBkm.saveLink();"/>
+		<menuitem id="AddDToUnsortBkm-contentContext-savePage"
+		          label="&AddDToUnsortBkm.content.context.savePage;"
+		          insertafter="context-bookmarkpage"
+		          oncommand="AddDToUnsortBkm.saveThisPage();"/>
+	</popup>
+</overlay>

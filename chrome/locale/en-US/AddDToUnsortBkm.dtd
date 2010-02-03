@@ -1,0 +1,7 @@
+<!ENTITY AddDToUnsortBkm.shortName                      "&quot;Unsorted&quot;">
+
+<!ENTITY AddDToUnsortBkm.tab.context.saveThisTab        "Bookmark This Tab to &AddDToUnsortBkm.shortName;">
+<!ENTITY AddDToUnsortBkm.tab.multipletab.saveSelected   "Bookmark Selected Tabs to &AddDToUnsortBkm.shortName;">
+
+<!ENTITY AddDToUnsortBkm.content.context.saveLink       "Bookmark This Link to &AddDToUnsortBkm.shortName;">
+<!ENTITY AddDToUnsortBkm.content.context.savePage       "Bookmark This Page to &AddDToUnsortBkm.shortName;">
