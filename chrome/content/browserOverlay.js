@@ -27,21 +27,28 @@ var AddDToUnsortBkm = {
 	},
 
 	onLoad: function AddDToUnsortBkm_onload() {
-		this.addMenuToTabCtx("AddDToUnsortBkm-tabContext-saveTab");
+		this.insertAllToTabCtx("AddDToUnsortBkm-tabContext",
+		                           document.getElementById("context_bookmarkAllTabs").nextSibling);
 
 		var contentAreaContext = document.getElementById("contentAreaContextMenu");
 		var self = this;
 		contentAreaContext.addEventListener("popupshowing", function () { self.ctrlContetCtxMenu(); }, false);
 	},
 
-	addMenuToTabCtx: function AddDToUnsortBkm_addMenuToTabCtx(aItemId) {
-		var tabContextMenu = document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
-		var menuItem = document.getElementById(aItemId);
-		var contextBkmAll_Next = document.getElementById('context_bookmarkAllTabs').nextSibling;
-		tabContextMenu.insertBefore(menuItem, contextBkmAll_Next);
+	insertAllToTabCtx: function AddDToUnsortBkm_insertAllToTabCtx(aId, aReference) {
+		var menuParent = document.getElementById(aId);
+		while (menuParent.hasChildNodes()) {
+			var node = menuParent.firstChild;
+			this.insertToTabCtxBefore(node, aReference);
+		}
 	},
 
-	ctrlContetCtxMenu: function () {
+	insertToTabCtxBefore: function AddDToUnsortBkm_insertToTabCtxBefore(aElem, aReference) {
+		var tabContextMenu = document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
+		tabContextMenu.insertBefore(aElem, aReference);
+	},
+
+	ctrlContetCtxMenu: function AddDToUnsortBkm_ctrlContetCtxMenu() {
 		gContextMenu.showItem("AddDToUnsortBkm-contentContext-savePage",
 		                      !(gContextMenu.isContentSelected || gContextMenu.onTextInput || gContextMenu.onLink ||
 		                        gContextMenu.onImage || gContextMenu.onVideo || gContextMenu.onAudio));
