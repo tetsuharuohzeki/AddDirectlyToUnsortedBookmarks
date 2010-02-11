@@ -5,3 +5,10 @@
 
 <!ENTITY AddDToUnsortBkm.content.context.saveLink       "このリンクを&AddDToUnsortBkm.shortName;にブックマーク">
 <!ENTITY AddDToUnsortBkm.content.context.savePage       "このページを&AddDToUnsortBkm.shortName;にブックマーク">
+
+
+<!ENTITY AddDToUnsortBkm.option.title                   "Add Directly to Unsorted Bookmarks - Options">
+<!ENTITY AddDToUnsortBkm.option.caption.tabctx          "Tab Context Menu">
+<!ENTITY AddDToUnsortBkm.option.pref.tabctx.savetab     "&AddDToUnsortBkm.tab.context.saveThisTab;">
+
+<!ENTITY AddDToUnsortBkm.option.caption.menu            "Add following items">

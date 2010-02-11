@@ -3,5 +3,17 @@
 <!ENTITY AddDToUnsortBkm.tab.context.saveThisTab        "Bookmark This Tab to &AddDToUnsortBkm.shortName;">
 <!ENTITY AddDToUnsortBkm.tab.multipletab.saveSelected   "Bookmark Selected Tabs to &AddDToUnsortBkm.shortName;">
 
-<!ENTITY AddDToUnsortBkm.content.context.saveLink       "Bookmark This Link to &AddDToUnsortBkm.shortName;">
 <!ENTITY AddDToUnsortBkm.content.context.savePage       "Bookmark This Page to &AddDToUnsortBkm.shortName;">
+<!ENTITY AddDToUnsortBkm.content.context.saveLink       "Bookmark This Link to &AddDToUnsortBkm.shortName;">
+
+
+
+<!ENTITY AddDToUnsortBkm.option.title                   "Add Directly to Unsorted Bookmarks - Options">
+<!ENTITY AddDToUnsortBkm.option.menu                    "Add following items">
+
+<!ENTITY AddDToUnsortBkm.option.tabCtx                  "Tab Context Menu">
+<!ENTITY AddDToUnsortBkm.option.pref.tabctx.saveTab     "&AddDToUnsortBkm.tab.context.saveThisTab;">
+
+<!ENTITY AddDToUnsortBkm.option.content                 "ContentArea Context Menu">
+<!ENTITY AddDToUnsortBkm.option.pref.content.savePage   "&AddDToUnsortBkm.content.context.savePage;">
+<!ENTITY AddDToUnsortBkm.option.pref.content.saveLink   "&AddDToUnsortBkm.content.context.saveLink;">

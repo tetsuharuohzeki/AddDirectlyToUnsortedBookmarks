@@ -26,13 +26,92 @@ var AddDToUnsortBkm = {
 		return this._IOService;
 	},
 
-	onLoad: function AddDToUnsortBkm_onload() {
-		this.insertAllToTabCtx("AddDToUnsortBkm-tabContext",
-		                           document.getElementById("context_bookmarkAllTabs").nextSibling);
+	//The preference domain of this add-on
+	PREF_DOMAIN: "extensions.add_d_to_unsortedbookmarks.",
 
-		var contentAreaContext = document.getElementById("contentAreaContextMenu");
-		var self = this;
-		contentAreaContext.addEventListener("popupshowing", function () { self.ctrlContetCtxMenu(); }, false);
+	PREF: {
+		content_savePage: null,
+		content_saveLink: null,
+	},
+
+	_prefBranch: null,
+	get prefBranch() {
+		if (!this._prefBranch) {
+			this._prefBranch = (new Preferences(this.PREF_DOMAIN));
+		}
+		return this._prefBranch;
+	},
+
+	handleEvent: function (aEvent) {
+		switch (aEvent.type) {
+			case "load":
+				this.onLoad();
+				break;
+			case "popupshowing":
+				this.ctrlContentCtxMenu();
+				break;
+			case "unload":
+				this.onUnLoad();
+				break;
+		}
+	},
+
+	observe: function (aSubject, aTopic, aData) {
+		if (aTopic == "nsPref:changed") {
+			var value = this.prefBranch.get(aData);
+			switch (aData) {
+				case "tab.saveTab":
+					this.prefShowItem("AddDToUnsortBkm-tabCtx-saveTab", value);
+					break;
+				case "content.savePage":
+					this.PREF.content_savePage = value;
+					break;
+				case "content.saveLink":
+					this.PREF.content_saveLink = value;
+					break;
+			}
+		}
+	},
+
+	onLoad: function AddDToUnsortBkm_onload() {
+		window.removeEventListener("load", AddDToUnsortBkm, false);
+		window.addEventListener("unload", AddDToUnsortBkm, false);
+
+		//Import JS Utils module
+		Components.utils.import("resource://AddDToUnsortBkm/Utils.js");
+
+		//Set Preferences Observer
+		this.prefBranch.observe("", this);
+
+		//set user preferences
+		this.initPref();
+
+		//set Context menu
+		this.initContext();
+	},
+
+	onUnLoad: function() {
+		window.removeEventListener("unload", this, false);
+
+		var contentAreaCtx = document.getElementById("contentAreaContextMenu");
+		contentAreaCtx.removeEventListener("popupshowing", this, false);
+
+		this.prefBranch.ignore("", this);
+	},
+
+	initPref: function () {
+		var allPref = this.prefBranch.prefSvc.getChildList("", {});
+		allPref.forEach(function(aPref) {
+			this.observe(null, "nsPref:changed", aPref);
+		}, this);
+	},
+
+	initContext: function () {
+		this.insertAllToTabCtx("AddDToUnsortBkm-tabContext",
+		                       document.getElementById("context_bookmarkAllTabs").nextSibling);
+
+		var contentAreaCtx = document.getElementById("contentAreaContextMenu");
+		contentAreaCtx.addEventListener("popupshowing", this, false);
 	},
 
 	insertAllToTabCtx: function AddDToUnsortBkm_insertAllToTabCtx(aId, aReference) {
@@ -48,12 +127,14 @@ var AddDToUnsortBkm = {
 		tabContextMenu.insertBefore(aElem, aReference);
 	},
 
-	ctrlContetCtxMenu: function AddDToUnsortBkm_ctrlContetCtxMenu() {
-		gContextMenu.showItem("AddDToUnsortBkm-contentContext-savePage",
+	ctrlContentCtxMenu: function AddDToUnsortBkm_ctrlContentCtxMenu() {
+		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-savePage",
 		                      !(gContextMenu.isContentSelected || gContextMenu.onTextInput || gContextMenu.onLink ||
-		                        gContextMenu.onImage || gContextMenu.onVideo || gContextMenu.onAudio));
-		gContextMenu.showItem("AddDToUnsortBkm-contentContext-saveLink",
-		                      gContextMenu.onLink && !gContextMenu.onMailtoLink);
+		                        gContextMenu.onImage || gContextMenu.onVideo || gContextMenu.onAudio) &&
+		                      this.PREF.content_savePage);
+		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-saveLink",
+		                      gContextMenu.onLink && !gContextMenu.onMailtoLink &&
+		                      this.PREF.content_saveLink);
 	},
 
 	saveLink: function AddDToUnsortBkm_saveLink() {
@@ -84,5 +165,14 @@ var AddDToUnsortBkm = {
 		                                     aIndex, aTitle);
 	},
 
+	prefShowItem: function (aItemId, aPref) {
+		var item = document.getElementById(aItemId);
+		if (aPref) {
+			item.removeAttribute("hidden");
+		} else {
+			item.setAttribute("hidden", "true");
+		}
+	},
+
 };
-window.addEventListener("load", function (){ AddDToUnsortBkm.onLoad(); }, false);
+window.addEventListener("load", AddDToUnsortBkm, false);
