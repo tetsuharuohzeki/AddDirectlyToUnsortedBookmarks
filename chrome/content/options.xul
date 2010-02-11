@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://AddDToUnsortBkm/locale/AddDToUnsortBkm.dtd">
+
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            id="AddDToUnsortBkm-Option"
+            title="&AddDToUnsortBkm.option.title;">
+
+	<prefpane id="AddDToUnsortBkm-prefpane1" label="">
+
+		<preferences>
+			<preference id="add_d_to_unsortedbookmarks.tab.saveTab"
+			            name="extensions.add_d_to_unsortedbookmarks.tab.saveTab"
+			            type="bool"/>
+			<preference id="add_d_to_unsortedbookmarks.content.savePage"
+			            name="extensions.add_d_to_unsortedbookmarks.content.savePage"
+			            type="bool"/>
+			<preference id="add_d_to_unsortedbookmarks.content.saveLink"
+			            name="extensions.add_d_to_unsortedbookmarks.content.saveLink"
+			            type="bool"/>
+		</preferences>
+
+		<groupbox id="Pref-AddDToUnsortBkm-menu">
+
+			<caption label="&AddDToUnsortBkm.option.menu;"/>
+
+			<groupbox id="Pref-AddDToUnsortBkm-tabctx">
+				<caption label="&AddDToUnsortBkm.option.tabCtx;"/>
+				<checkbox id="Pref-AddDToUnsortBkm-tabctx-savetab"
+				          preference="add_d_to_unsortedbookmarks.tab.saveTab"
+				          label="&AddDToUnsortBkm.option.pref.tabctx.saveTab;"
+				          accesskey=""/>
+			</groupbox>
+
+			<groupbox id="Pref-AddDToUnsortBkm-content">
+				<caption label="&AddDToUnsortBkm.option.content;"/>
+				<checkbox id="Pref-AddDToUnsortBkm-content-savePage"
+				          preference="add_d_to_unsortedbookmarks.content.savePage"
+				          label="&AddDToUnsortBkm.option.pref.content.savePage;"
+				          accesskey=""/>
+				<checkbox id="Pref-AddDToUnsortBkm-content-saveLink"
+				          preference="add_d_to_unsortedbookmarks.content.saveLink"
+				          label="&AddDToUnsortBkm.option.pref.content.saveLink;"
+				          accesskey=""/>
+			</groupbox>
+
+		</groupbox>
+
+	</prefpane>
+
+</prefwindow>
