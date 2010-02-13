@@ -3,10 +3,10 @@
  * The following codes are based on <https://wiki.mozilla.org/Labs/JS_Modules>.
  * @License     MPL 1.1/GPL 2.0/LGPL 2.1
  * @developer   saneyuki
- * @version     20100211.2
+ * @version     20100213.1
  */
 
-var EXPORTED_SYMBOLS = ["Preferences", "Observers", "StringBundle"];
+var EXPORTED_SYMBOLS = ["Preferences", "Observers", "StringBundle", "Extensions"];
 
 /**
  * Preferences Utils
@@ -87,13 +87,12 @@ Preferences.prototype = {
 	ignore: function (aPrefBranch, aObsObj) {
 		this.prefSvc.removeObserver(aPrefBranch, aObsObj);
 	},
-
 };
 Preferences.__proto__ = Preferences.prototype;
 
 /**
  * Observers Utils
- * @version 0.1.20100211.1
+ * @version 0.1.20100212.1
  */
 var Observers = {
 	_observers: null,
@@ -114,11 +113,10 @@ var Observers = {
 	remove: function (aTopic, aObsObj) {
 		var observerArray = ObserverCache.filter(function(aElm){ return (aElm.topic == aTopic &&
 		                                                                 aElm.obsObj == aObsObj); });
-		var self = this;
-		observerArray.map(function(aElem){
-			self.observers.removeObserver(aElem, aTopic);
+		observerArray.forEach(function(aElem){
+			this.observers.removeObserver(aElem, aTopic);
 			ObserverCache.splice(ObserverCache.indexOf(aElem), 1);
-		});
+		}, this);
 	},
 
 	notify: function (aTopic, aSubject, aData) {
@@ -160,7 +158,7 @@ StringBundle.prototype = {
 		if (!this._bundle) {
 			this._bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
 			               .getService(Components.interfaces.nsIStringBundleService)
-		                   .createBundle(this.propertiesURI);
+			               .createBundle(this.propertiesURI);
 		}
 		return this._bundle;
 	},
@@ -174,6 +172,7 @@ StringBundle.prototype = {
 		}
 	},
 };
+
 
 /**
  * Console Utils
@@ -192,5 +191,71 @@ var Console = {
 
 	log: function (aMsg) {
 		this.console.logStringMessage(aMsg);
+	},
+};
+
+/**
+ * Extension Utils
+ * @version 0.1.20100213.1
+ */
+var Extension = {
+
+	_extensionManager: null,
+	get extensionManager() {
+		 if (!this._ExtensionManager) {
+			this._extensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+			                         .getService(Components.interfaces.nsIExtensionManager);
+		}
+		return this._extensionManager;
+	},
+
+	_RDFSvc: null,
+	get RDFSvc() {
+		 if (!this._RDFSvc) {
+			this._RDFSvc = Components.classes['@mozilla.org/rdf/rdf-service;1']
+			               .getService(Components.interfaces.nsIRDFService);
+		}
+		return this._RDFSvc;
+	},
+
+	isInstalled: function(aExtensionId) {
+		var location = this.extensionManager.getInstallLocation(aExtensionId);
+		if (location) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	},
+
+	isEnabled: function(aExtensionId) {
+		var extResource = this.RDFSvc.GetResource("urn:mozilla:item:" + aExtensionId);
+
+		var appDiabled = false;
+		var userDisabled = false;
+
+		// Checking whether the Extension is disabled by Apps.
+		try {
+			appDiabled = (this.extensionManager.datasource
+			              .GetTarget(extResource,
+			                         this.RDFSvc.GetResource("http://www.mozilla.org/2004/em-rdf#appDisabled"),
+			                         true)
+			              .QueryInterface(Components.interfaces.nsIRDFLiteral)
+			              .Value == "true");
+		}
+		catch (e) {}
+
+		// Checking whether the Extension is disabled by user.
+		try {
+			userDisabled = (this.extensionManager.datasource
+			                .GetTarget(extResource,
+			                           this.RDFSvc.GetResource("http://www.mozilla.org/2004/em-rdf#userDisabled"),
+			                           true)
+			                .QueryInterface(Components.interfaces.nsIRDFLiteral)
+			                .Value == "true");
+		}
+		catch (e) {}
+
+		return (!appDiabled && !userDisabled);
 	},
 };

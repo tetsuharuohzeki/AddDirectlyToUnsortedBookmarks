@@ -7,8 +7,12 @@
 <!ENTITY AddDToUnsortBkm.content.context.savePage       "このページを&AddDToUnsortBkm.shortName;にブックマーク">
 
 
-<!ENTITY AddDToUnsortBkm.option.title                   "Add Directly to Unsorted Bookmarks - Options">
-<!ENTITY AddDToUnsortBkm.option.caption.tabctx          "Tab Context Menu">
-<!ENTITY AddDToUnsortBkm.option.pref.tabctx.savetab     "&AddDToUnsortBkm.tab.context.saveThisTab;">
+<!ENTITY AddDToUnsortBkm.option.title                   "Add Directly to Unsorted Bookmarks - オプション">
+<!ENTITY AddDToUnsortBkm.option.menu                    "メニューアイテムの追加">
 
-<!ENTITY AddDToUnsortBkm.option.caption.menu            "Add following items">
+<!ENTITY AddDToUnsortBkm.option.tabCtx                  "タブコンテクストメニュー">
+<!ENTITY AddDToUnsortBkm.option.pref.tabctx.saveTab     "&AddDToUnsortBkm.tab.context.saveThisTab;">
+
+<!ENTITY AddDToUnsortBkm.option.content                 "コンテンツエリアコンテキストメニュー">
+<!ENTITY AddDToUnsortBkm.option.pref.content.savePage   "&AddDToUnsortBkm.content.context.savePage;">
+<!ENTITY AddDToUnsortBkm.option.pref.content.saveLink   "&AddDToUnsortBkm.content.context.saveLink;">

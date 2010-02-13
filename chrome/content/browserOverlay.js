@@ -74,8 +74,8 @@ var AddDToUnsortBkm = {
 	},
 
 	onLoad: function AddDToUnsortBkm_onload() {
-		window.removeEventListener("load", AddDToUnsortBkm, false);
-		window.addEventListener("unload", AddDToUnsortBkm, false);
+		window.removeEventListener("load", this, false);
+		window.addEventListener("unload", this, false);
 
 		//Import JS Utils module
 		Components.utils.import("resource://AddDToUnsortBkm/Utils.js");
