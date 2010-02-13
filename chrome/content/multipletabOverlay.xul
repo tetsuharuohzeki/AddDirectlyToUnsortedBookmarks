@@ -9,7 +9,7 @@
 	<script type="application/javascript" src="chrome://AddDToUnsortBkm/content/multipletabOverlay.js"></script>
 
 	<menupopup id="multipletab-tabcontext-menu-template">
-		<menuitem id="AddDToUnsortBkm-tabContext-saveTab-multipletab"
+		<menuitem id="AddDToUnsortBkm-tabCtx-saveTab-multipletab"
 		          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
 		          oncommand="AddDToUnsortBkm.saveThisTab();"
 		          multipletab-insertafter="document.getElementById('context_bookmarkAllTabs')"/>
@@ -18,9 +18,10 @@
 	</menupopup>
 
 	<menupopup id="multipletab-selection-menu">
-		<menuitem id="AddDToUnsortBkm-tabContext-saveSelected-multipletab-selection"
+		<menuitem id="AddDToUnsortBkm-tabCtx-saveSelected-multipletab-selection"
 		          label="&AddDToUnsortBkm.tab.multipletab.saveSelected;"
-		          oncommand="AddDToUnsortBkmMultipleTab.saveSelectedTabs();"/>
+		          oncommand="AddDToUnsortBkmMultipleTab.saveSelectedTabs();"
+		          insertbefore="multipletab-selection-duplicate-separator"/>
 	</menupopup>
 
 

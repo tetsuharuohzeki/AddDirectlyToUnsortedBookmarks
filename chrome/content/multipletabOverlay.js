@@ -8,28 +8,32 @@ var AddDToUnsortBkmMultipleTab = {
 		return this._service;
 	},
 
+	handleEvent: function (aEvent) {
+		switch (aEvent.type) {
+			case "load":
+				this.onLoad();
+				break;
+		}
+	},
+
 	onLoad: function AddDToUnsortBkmMultipleTab_onLoad() {
-		this.changeInsertionWhere();
+		window.removeEventListener("load", this, false);
+
 		this.deleteItemFromTabCtx();
 	},
 
+
 	deleteItemFromTabCtx: function AddDToUnsortBkmMultipleTab_deleteItemFromTabCtx() {
 		var tabContextMenu = document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
-		var menuitem = document.getElementById("AddDToUnsortBkm-tabContext-saveTab");
+		var menuitem = document.getElementById("AddDToUnsortBkm-tabCtx-saveTab");
 		tabContextMenu.removeChild(menuitem);
 	},
 
-	changeInsertionWhere: function AddDToUnsortBkmMultipleTab_changeInsertionWhere() {
-		var menuitem = document.getElementById("AddDToUnsortBkm-tabContext-saveSelected-multipletab-selection");
-		var multipleSelection = document.getElementById("multipletab-selection-menu");
-		multipleSelection.insertBefore(menuitem, document.getElementById("multipletab-selection-duplicate-separator"));
-	},
-
 	saveSelectedTabs: function AddDToUnsortBkmMultipleTab_saveSelectedTabs() {
-		MultipleTabService.getSelectedTabs().map(function(aTab) {
+		MultipleTabService.getSelectedTabs().forEach(function(aTab) {
 			this.service.saveItem(aTab.linkedBrowser.currentURI.spec,
 			                      aTab.linkedBrowser.contentDocument.title || aTab.getAttribute("label"));
 		});
 	}
 };
-window.addEventListener("load", function (){ AddDToUnsortBkmMultipleTab.onLoad(); }, false);
+window.addEventListener("load", AddDToUnsortBkmMultipleTab, false);
