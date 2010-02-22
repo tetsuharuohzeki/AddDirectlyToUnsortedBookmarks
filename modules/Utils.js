@@ -195,10 +195,10 @@ var Console = {
 };
 
 /**
- * Extension Utils
+ * Extensions Utils
  * @version 0.1.20100213.1
  */
-var Extension = {
+var Extensions = {
 
 	_extensionManager: null,
 	get extensionManager() {
