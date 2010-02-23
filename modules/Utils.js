@@ -3,14 +3,14 @@
  * The following codes are based on <https://wiki.mozilla.org/Labs/JS_Modules>.
  * @License     MPL 1.1/GPL 2.0/LGPL 2.1
  * @developer   saneyuki
- * @version     20100213.1
+ * @version     20100223.1
  */
 
 var EXPORTED_SYMBOLS = ["Preferences", "Observers", "StringBundle", "Extensions"];
 
 /**
  * Preferences Utils
- * @version 0.1.20100211.2
+ * @version 0.1.20100223.1
  */
 function Preferences(aPrefBranch) {
 	if (aPrefBranch) {
@@ -47,10 +47,6 @@ Preferences.prototype = {
 	},
 
 	set: function (aPrefName, aPrefValue) {
-		if (!aPrefValue) {
-			return;
-		}
-
 		var prefSvc = this.prefSvc;
 		var PrefType = typeof aPrefValue;
 
