@@ -78,7 +78,7 @@ var AddDToUnsortBkm = {
 		window.addEventListener("unload", this, false);
 
 		//Import JS Utils module
-		Components.utils.import("resource://AddDToUnsortBkm/Utils.js");
+		Components.utils.import("resource://AddDToUnsortBkm/UtilsForExtension.js");
 
 		//Set Preferences Observer
 		this.prefBranch.observe("", this);
@@ -100,7 +100,7 @@ var AddDToUnsortBkm = {
 	},
 
 	initPref: function () {
-		var allPref = this.prefBranch.prefSvc.getChildList("", {});
+		var allPref = this.prefBranch.getChildList("");
 		allPref.forEach(function(aPref) {
 			this.observe(null, "nsPref:changed", aPref);
 		}, this);
