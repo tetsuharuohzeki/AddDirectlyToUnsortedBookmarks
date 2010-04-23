@@ -37,7 +37,7 @@ var AddDToUnsortBkm = {
 	_prefBranch: null,
 	get prefBranch() {
 		if (!this._prefBranch) {
-			this._prefBranch = (new Preferences(this.PREF_DOMAIN));
+			this._prefBranch = (new this.Preferences(this.PREF_DOMAIN));
 		}
 		return this._prefBranch;
 	},
@@ -78,7 +78,7 @@ var AddDToUnsortBkm = {
 		window.addEventListener("unload", this, false);
 
 		//Import JS Utils module
-		Components.utils.import("resource://AddDToUnsortBkm/UtilsForExtension.js");
+		Components.utils.import("resource://AddDToUnsortBkm/UtilsForExtension.js", this);
 
 		//Set Preferences Observer
 		this.prefBranch.observe("", this);
