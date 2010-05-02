@@ -27,22 +27,26 @@
 
 			<groupbox id="Pref-AddDToUnsortBkm-tabctx">
 				<caption label="&AddDToUnsortBkm.option.tabCtx;"/>
-				<checkbox id="Pref-AddDToUnsortBkm-tabctx-savetab"
-				          preference="add_d_to_unsortedbookmarks.tab.saveTab"
-				          label="&AddDToUnsortBkm.option.pref.tabctx.saveTab;"
-				          accesskey=""/>
+				<vbox>
+					<checkbox id="Pref-AddDToUnsortBkm-tabctx-savetab"
+					          preference="add_d_to_unsortedbookmarks.tab.saveTab"
+					          label="&AddDToUnsortBkm.option.pref.tabctx.saveTab;"
+					          accesskey=""/>
+				</vbox>
 			</groupbox>
 
 			<groupbox id="Pref-AddDToUnsortBkm-content">
 				<caption label="&AddDToUnsortBkm.option.content;"/>
-				<checkbox id="Pref-AddDToUnsortBkm-content-savePage"
-				          preference="add_d_to_unsortedbookmarks.content.savePage"
-				          label="&AddDToUnsortBkm.option.pref.content.savePage;"
-				          accesskey=""/>
-				<checkbox id="Pref-AddDToUnsortBkm-content-saveLink"
-				          preference="add_d_to_unsortedbookmarks.content.saveLink"
-				          label="&AddDToUnsortBkm.option.pref.content.saveLink;"
-				          accesskey=""/>
+				<vbox>
+					<checkbox id="Pref-AddDToUnsortBkm-content-savePage"
+					          preference="add_d_to_unsortedbookmarks.content.savePage"
+					          label="&AddDToUnsortBkm.option.pref.content.savePage;"
+					          accesskey=""/>
+					<checkbox id="Pref-AddDToUnsortBkm-content-saveLink"
+					          preference="add_d_to_unsortedbookmarks.content.saveLink"
+					          label="&AddDToUnsortBkm.option.pref.content.saveLink;"
+					          accesskey=""/>
+				</vbox>
 			</groupbox>
 
 		</groupbox>
