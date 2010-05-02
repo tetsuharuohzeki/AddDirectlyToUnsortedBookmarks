@@ -12,7 +12,8 @@
 		<menuitem id="AddDToUnsortBkm-tabCtx-saveTab-multipletab"
 		          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
 		          oncommand="AddDToUnsortBkm.saveThisTab();"
-		          multipletab-insertafter="document.getElementById('context_bookmarkAllTabs')"/>
+		          multipletab-insertafter="document.getElementById('context_bookmarkAllTabs')"
+		          multipletab-available="AddDToUnsortBkm.PREF.ctx_saveTab"/>
 		<menuseparator id="AddDToUnsortBkm_separator-multipletab"
 		               multipletab-insertafter="document.getElementById('context_bookmarkAllTabs').nextSibling"/>
 	</menupopup>
@@ -21,7 +22,8 @@
 		<menuitem id="AddDToUnsortBkm-tabCtx-saveSelected-multipletab-selection"
 		          label="&AddDToUnsortBkm.tab.multipletab.saveSelected;"
 		          oncommand="AddDToUnsortBkmMultipleTab.saveSelectedTabs();"
-		          insertbefore="multipletab-selection-duplicate-separator"/>
+		          insertbefore="multipletab-selection-duplicate-separator"
+		          multipletab-available="AddDToUnsortBkm.PREF.ctx_saveSelectedTabs"/>
 	</menupopup>
 
 

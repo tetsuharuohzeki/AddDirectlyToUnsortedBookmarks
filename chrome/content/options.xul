@@ -13,6 +13,9 @@
 			<preference id="add_d_to_unsortedbookmarks.tab.saveTab"
 			            name="extensions.add_d_to_unsortedbookmarks.tab.saveTab"
 			            type="bool"/>
+			<preference id="add_d_to_unsortedbookmarks.tab.saveSeleCtedTabs"
+			            name="extensions.add_d_to_unsortedbookmarks.tab.saveSeleCtedTabs"
+			            type="bool"/>
 			<preference id="add_d_to_unsortedbookmarks.content.savePage"
 			            name="extensions.add_d_to_unsortedbookmarks.content.savePage"
 			            type="bool"/>
@@ -31,6 +34,10 @@
 					<checkbox id="Pref-AddDToUnsortBkm-tabctx-savetab"
 					          preference="add_d_to_unsortedbookmarks.tab.saveTab"
 					          label="&AddDToUnsortBkm.option.pref.tabctx.saveTab;"
+					          accesskey=""/>
+					<checkbox id="Pref-AddDToUnsortBkm-tabctx-savetab"
+					          preference="add_d_to_unsortedbookmarks.tab.saveSeleCtedTabs"
+					          label="&AddDToUnsortBkm.option.pref.tabctx.saveSeleCtedTabs;"
 					          accesskey=""/>
 				</vbox>
 			</groupbox>

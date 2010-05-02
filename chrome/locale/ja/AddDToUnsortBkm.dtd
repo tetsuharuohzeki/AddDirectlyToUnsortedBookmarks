@@ -1,18 +1,19 @@
-<!ENTITY AddDToUnsortBkm.shortName                      "&quot;未整理&quot;">
+<!ENTITY AddDToUnsortBkm.shortName                            "&quot;未整理&quot;">
 
-<!ENTITY AddDToUnsortBkm.tab.context.saveThisTab        "このタブを&AddDToUnsortBkm.shortName;にブックマーク">
-<!ENTITY AddDToUnsortBkm.tab.multipletab.saveSelected   "選択しているタブを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.tab.context.saveThisTab              "このタブを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.tab.multipletab.saveSelected         "選択しているタブを&AddDToUnsortBkm.shortName;にブックマーク">
 
-<!ENTITY AddDToUnsortBkm.content.context.saveLink       "このリンクを&AddDToUnsortBkm.shortName;にブックマーク">
-<!ENTITY AddDToUnsortBkm.content.context.savePage       "このページを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.content.context.saveLink             "このリンクを&AddDToUnsortBkm.shortName;にブックマーク">
+<!ENTITY AddDToUnsortBkm.content.context.savePage             "このページを&AddDToUnsortBkm.shortName;にブックマーク">
 
 
-<!ENTITY AddDToUnsortBkm.option.title                   "Add Directly to Unsorted Bookmarks - オプション">
-<!ENTITY AddDToUnsortBkm.option.menu                    "メニューアイテムの追加">
+<!ENTITY AddDToUnsortBkm.option.title                         "Add Directly to Unsorted Bookmarks - オプション">
+<!ENTITY AddDToUnsortBkm.option.menu                          "メニューアイテムの追加">
+                                                              
+<!ENTITY AddDToUnsortBkm.option.tabCtx                        "タブコンテクストメニュー">
+<!ENTITY AddDToUnsortBkm.option.pref.tabctx.saveTab           "&AddDToUnsortBkm.tab.context.saveThisTab;">
+<!ENTITY AddDToUnsortBkm.option.pref.tabctx.saveSeleCtedTabs  "&AddDToUnsortBkm.tab.multipletab.saveSelected;">
 
-<!ENTITY AddDToUnsortBkm.option.tabCtx                  "タブコンテクストメニュー">
-<!ENTITY AddDToUnsortBkm.option.pref.tabctx.saveTab     "&AddDToUnsortBkm.tab.context.saveThisTab;">
-
-<!ENTITY AddDToUnsortBkm.option.content                 "コンテンツエリアコンテキストメニュー">
-<!ENTITY AddDToUnsortBkm.option.pref.content.savePage   "&AddDToUnsortBkm.content.context.savePage;">
-<!ENTITY AddDToUnsortBkm.option.pref.content.saveLink   "&AddDToUnsortBkm.content.context.saveLink;">
+<!ENTITY AddDToUnsortBkm.option.content                       "コンテンツエリアコンテキストメニュー">
+<!ENTITY AddDToUnsortBkm.option.pref.content.savePage         "&AddDToUnsortBkm.content.context.savePage;">
+<!ENTITY AddDToUnsortBkm.option.pref.content.saveLink         "&AddDToUnsortBkm.content.context.saveLink;">

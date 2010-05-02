@@ -30,6 +30,8 @@ var AddDToUnsortBkm = {
 	PREF_DOMAIN: "extensions.add_d_to_unsortedbookmarks.",
 
 	PREF: {
+		ctx_saveTab: null,
+		ctx_saveSelectedTabs: null,
 		content_savePage: null,
 		content_saveLink: null,
 	},
@@ -61,7 +63,11 @@ var AddDToUnsortBkm = {
 			var value = this.prefBranch.get(aData);
 			switch (aData) {
 				case "tab.saveTab":
+					this.PREF.ctx_saveTab = value;
 					this.prefShowItem("AddDToUnsortBkm-tabCtx-saveTab", value);
+					break;
+				case "tab.saveSeleCtedTabs":
+					this.PREF.ctx_saveSelectedTabs = value;
 					break;
 				case "content.savePage":
 					this.PREF.content_savePage = value;
