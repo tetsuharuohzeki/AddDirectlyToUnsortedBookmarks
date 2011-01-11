@@ -128,7 +128,6 @@ var AddDToUnsortBkm = {
 	},
 
 	saveLink: function AddDToUnsortBkm_saveLink() {
-		urlSecurityCheck(gContextMenu.linkURL, gContextMenu.target.ownerDocument.nodePrincipal);
 		this.saveItem(gContextMenu.linkURL, gContextMenu.linkText());
 	},
 
@@ -149,7 +148,7 @@ var AddDToUnsortBkm = {
 	saveItem: function AddDToUnsortBkm_saveItem(aURI, aTitle, aIndex) {
 		var uri = this.IOService.newURI(aURI, null, null);
 		if (!aIndex) {
-			aIndex = -1;
+			aIndex = this.bookmarksSvc.DEFAULT_INDEX;
 		}
 		this.bookmarksService.insertBookmark(this.unfiledBookmarksFolder, uri,
 		                                     aIndex, aTitle);

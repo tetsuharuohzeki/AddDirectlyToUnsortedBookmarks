@@ -33,8 +33,7 @@ var AddDToUnsortBkmMultipleTab = {
 
 	saveSelectedTabs: function AddDToUnsortBkmMultipleTab_saveSelectedTabs() {
 		MultipleTabService.getSelectedTabs().forEach(function(aTab) {
-			this.service.saveItem(aTab.linkedBrowser.currentURI.spec,
-			                      aTab.linkedBrowser.contentDocument.title || aTab.getAttribute("label"));
+			this.service.saveTab(aTab);
 		});
 	}
 };
