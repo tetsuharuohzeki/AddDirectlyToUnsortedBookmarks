@@ -17,7 +17,7 @@
 		</menupopup>
 	</popupset>
 
-	<popup id="contentAreaContextMenu">
+	<menupopup id="contentAreaContextMenu">
 		<menuitem id="AddDToUnsortBkm-contentCtx-savePage"
 		          label="&AddDToUnsortBkm.content.context.savePage;"
 		          insertafter="context-bookmarkpage"
@@ -26,5 +26,5 @@
 		          label="&AddDToUnsortBkm.content.context.saveLink;"
 		          insertafter="context-bookmarklink"
 		          oncommand="AddDToUnsortBkm.saveLink();"/>
-	</popup>
+	</menupopup>
 </overlay>
