@@ -1,5 +1,7 @@
 var AddDToUnsortBkmMultipleTab = {
 
+	ElmId_tabCtxSaveTab: "AddDToUnsortBkm-tabCtx-saveTab",
+
 	_service: null,
 	get service() {
 		if (!this._service) {
@@ -24,8 +26,8 @@ var AddDToUnsortBkmMultipleTab = {
 
 
 	deleteItemFromTabCtx: function AddDToUnsortBkmMultipleTab_deleteItemFromTabCtx() {
-		var tabContextMenu = document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
-		var menuitem = document.getElementById("AddDToUnsortBkm-tabCtx-saveTab");
+		var tabContextMenu = gBrowser.tabContextMenu;
+		var menuitem = document.getElementById(this.ElmId_tabCtxSaveTab);
 		tabContextMenu.removeChild(menuitem);
 	},
 

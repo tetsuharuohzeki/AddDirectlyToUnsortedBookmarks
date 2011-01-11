@@ -113,25 +113,8 @@ var AddDToUnsortBkm = {
 	},
 
 	initContext: function () {
-		this.insertAllToTabCtx("AddDToUnsortBkm-tabContext",
-		                       document.getElementById("context_bookmarkAllTabs").nextSibling);
-
 		var contentAreaCtx = document.getElementById("contentAreaContextMenu");
 		contentAreaCtx.addEventListener("popupshowing", this, false);
-	},
-
-	insertAllToTabCtx: function AddDToUnsortBkm_insertAllToTabCtx(aId, aReference) {
-		var menuParent = document.getElementById(aId);
-		while (menuParent.hasChildNodes()) {
-			var node = menuParent.firstChild;
-			this.insertToTabCtxBefore(node, aReference);
-		}
-	},
-
-	insertToTabCtxBefore: function AddDToUnsortBkm_insertToTabCtxBefore(aElem, aReference) {
-		var tabContextMenu = gBrowser.tabContextMenu ||
-		                     document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
-		tabContextMenu.insertBefore(aElem, aReference);
 	},
 
 	ctrlContentCtxMenu: function AddDToUnsortBkm_ctrlContentCtxMenu() {
