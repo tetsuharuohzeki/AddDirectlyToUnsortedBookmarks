@@ -2,12 +2,9 @@ var AddDToUnsortBkmMultipleTab = {
 
 	ElmId_tabCtxSaveTab: "AddDToUnsortBkm-tabCtx-saveTab",
 
-	_service: null,
 	get service() {
-		if (!this._service) {
-			this._service = AddDToUnsortBkm;
-		}
-		return this._service;
+		delete this.service
+		return this.service = AddDToUnsortBkm;
 	},
 
 	handleEvent: function (aEvent) {
