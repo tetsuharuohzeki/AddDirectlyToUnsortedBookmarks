@@ -35,7 +35,7 @@ var AddDToUnsortBkmMultipleTab = {
 		MultipleTabService.getSelectedTabs().forEach(function(aTab) {
 			this.service.saveItem(aTab.linkedBrowser.currentURI.spec,
 			                      aTab.linkedBrowser.contentDocument.title || aTab.getAttribute("label"));
-		});
+		}, this);
 	}
 };
 window.addEventListener("load", AddDToUnsortBkmMultipleTab, false);
