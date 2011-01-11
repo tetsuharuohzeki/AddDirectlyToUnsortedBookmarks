@@ -148,7 +148,7 @@ var AddDToUnsortBkm = {
 	saveItem: function AddDToUnsortBkm_saveItem(aURI, aTitle, aIndex) {
 		var uri = this.IOService.newURI(aURI, null, null);
 		if (!aIndex) {
-			aIndex = this.bookmarksSvc.DEFAULT_INDEX;
+			aIndex = this.bookmarksService.DEFAULT_INDEX;
 		}
 		this.bookmarksService.insertBookmark(this.unfiledBookmarksFolder, uri,
 		                                     aIndex, aTitle);
