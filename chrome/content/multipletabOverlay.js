@@ -31,7 +31,7 @@ var AddDToUnsortBkmMultipleTab = {
 	saveSelectedTabs: function AddDToUnsortBkmMultipleTab_saveSelectedTabs() {
 		MultipleTabService.getSelectedTabs().forEach(function(aTab) {
 			this.service.saveTab(aTab);
-		});
+		}, this);
 	}
 };
 window.addEventListener("load", AddDToUnsortBkmMultipleTab, false);
