@@ -9,13 +9,12 @@
 
 	<script type="application/javascript" src="chrome://AddDToUnsortBkm/content/browserOverlay.js"></script>
 
-	<popupset id="mainPopupSet">
-		<menupopup  id="AddDToUnsortBkm-tabContext">
-			<menuitem id="AddDToUnsortBkm-tabCtx-saveTab"
-			          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
-			          oncommand="AddDToUnsortBkm.saveThisTab();"/>
-		</menupopup>
-	</popupset>
+	 <menupopup id="tabContextMenu">
+		<menuitem id="AddDToUnsortBkm-tabCtx-saveTab"
+		          label="&AddDToUnsortBkm.tab.context.saveThisTab;"
+		          insertafter="context_bookmarkAllTabs"
+		          oncommand="AddDToUnsortBkm.saveThisTab();"/>
+	 </menupopup>
 
 	<menupopup id="contentAreaContextMenu">
 		<menuitem id="AddDToUnsortBkm-contentCtx-savePage"

@@ -1,29 +1,20 @@
 var AddDToUnsortBkm = {
 
-	_bookmarksService: null,
-	get bookmarksService() {
-		if (!this._bookmarksService) {
-			this._bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
-			                         .getService(Components.interfaces.nsINavBookmarksService);
-		}
-		return this._bookmarksService;
+	get bookmarksService () {
+		delete this.bookmarksService
+		return this.bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
+		                               .getService(Components.interfaces.nsINavBookmarksService);
 	},
 
-	_unfiledBookmarksFolder: null,
-	get unfiledBookmarksFolder() {
-		if (!this._unfiledBookmarksFolder) {
-			this._unfiledBookmarksFolder = this.bookmarksService.unfiledBookmarksFolder;
-		}
-		return this._unfiledBookmarksFolder;
+	get unfiledBookmarksFolder () {
+		delete this.unfiledBookmarksFolder;
+		return this.unfiledBookmarksFolder = this.bookmarksService.unfiledBookmarksFolder;
 	},
 
-	_IOService: null,
-	get IOService() {
-		if (!this._IOService) {
-			this._IOService = Components.classes["@mozilla.org/network/io-service;1"]
-			                  .getService(Components.interfaces.nsIIOService);
-		}
-		return this._IOService;
+	get IOService () {
+		delete this.IOService;
+		return this.IOService = Components.classes["@mozilla.org/network/io-service;1"]
+		                        .getService(Components.interfaces.nsIIOService);
 	},
 
 	//The preference domain of this add-on
@@ -36,12 +27,9 @@ var AddDToUnsortBkm = {
 		content_saveLink: null,
 	},
 
-	_prefBranch: null,
-	get prefBranch() {
-		if (!this._prefBranch) {
-			this._prefBranch = (new this.Preferences(this.PREF_DOMAIN));
-		}
-		return this._prefBranch;
+	get prefBranch () {
+		delete this.prefBranch;
+		return this.prefBranch = new this.Preferences(this.PREF_DOMAIN);
 	},
 
 	handleEvent: function (aEvent) {
@@ -113,25 +101,8 @@ var AddDToUnsortBkm = {
 	},
 
 	initContext: function () {
-		this.insertAllToTabCtx("AddDToUnsortBkm-tabContext",
-		                       document.getElementById("context_bookmarkAllTabs").nextSibling);
-
 		var contentAreaCtx = document.getElementById("contentAreaContextMenu");
 		contentAreaCtx.addEventListener("popupshowing", this, false);
-	},
-
-	insertAllToTabCtx: function AddDToUnsortBkm_insertAllToTabCtx(aId, aReference) {
-		var menuParent = document.getElementById(aId);
-		while (menuParent.hasChildNodes()) {
-			var node = menuParent.firstChild;
-			this.insertToTabCtxBefore(node, aReference);
-		}
-	},
-
-	insertToTabCtxBefore: function AddDToUnsortBkm_insertToTabCtxBefore(aElem, aReference) {
-		var tabContextMenu = gBrowser.tabContextMenu ||
-		                     document.getAnonymousElementByAttribute(gBrowser, "anonid", "tabContextMenu");
-		tabContextMenu.insertBefore(aElem, aReference);
 	},
 
 	ctrlContentCtxMenu: function AddDToUnsortBkm_ctrlContentCtxMenu() {
@@ -145,7 +116,6 @@ var AddDToUnsortBkm = {
 	},
 
 	saveLink: function AddDToUnsortBkm_saveLink() {
-		urlSecurityCheck(gContextMenu.linkURL, gContextMenu.target.ownerDocument.nodePrincipal);
 		this.saveItem(gContextMenu.linkURL, gContextMenu.linkText());
 	},
 
@@ -166,7 +136,7 @@ var AddDToUnsortBkm = {
 	saveItem: function AddDToUnsortBkm_saveItem(aURI, aTitle, aIndex) {
 		var uri = this.IOService.newURI(aURI, null, null);
 		if (!aIndex) {
-			aIndex = -1;
+			aIndex = this.bookmarksService.DEFAULT_INDEX;
 		}
 		this.bookmarksService.insertBookmark(this.unfiledBookmarksFolder, uri,
 		                                     aIndex, aTitle);
