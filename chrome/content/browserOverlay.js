@@ -67,9 +67,6 @@ var AddDToUnsortBkm = {
 		window.removeEventListener("load", this, false);
 		window.addEventListener("unload", this, false);
 
-		//Import JS Utils module
-		Components.utils.import("resource://AddDToUnsortBkm/UtilsForExtension.js", this);
-
 		//Set Preferences Observer
 		this.prefBranch.addObserver("", this, false);
 
