@@ -8,6 +8,8 @@
 
 var EXPORTED_SYMBOLS = ["Preferences", "Observers", "StringBundle"];
 
+Components.utils.import("resource://gre/modules/Services.jsm");
+
 /**
  * Preferences Utils
  * @version 0.1.20100421.1
@@ -24,9 +26,7 @@ Preferences.prototype = {
 	_prefSvc: null,
 	get prefSvc() {
 		if (!this._prefSvc) {
-			this._prefSvc = Components.classes["@mozilla.org/preferences-service;1"]
-			                .getService(Components.interfaces.nsIPrefService)
-			                .getBranch(this._prefBranch)
+			this._prefSvc = Services.prefs.getBranch(this._prefBranch)
 			                .QueryInterface(Components.interfaces.nsIPrefBranch2);
 		}
 		return this._prefSvc;
