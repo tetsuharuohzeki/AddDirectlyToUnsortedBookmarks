@@ -24,7 +24,8 @@ var AddDToUnsortBkm = {
 
 	get prefBranch () {
 		delete this.prefBranch;
-		return this.prefBranch = new this.Preferences(this.PREF_DOMAIN);
+		return this.prefBranch =Services.prefs.getBranch(this.PREF_DOMAIN)
+		                        .QueryInterface(Components.interfaces.nsIPrefBranch2);
 	},
 
 	handleEvent: function (aEvent) {
@@ -43,7 +44,7 @@ var AddDToUnsortBkm = {
 
 	observe: function (aSubject, aTopic, aData) {
 		if (aTopic == "nsPref:changed") {
-			var value = this.prefBranch.get(aData);
+			var value = this.prefBranch.getBoolPref(aData);
 			switch (aData) {
 				case "tab.saveTab":
 					this.PREF.ctx_saveTab = value;
@@ -70,7 +71,7 @@ var AddDToUnsortBkm = {
 		Components.utils.import("resource://AddDToUnsortBkm/UtilsForExtension.js", this);
 
 		//Set Preferences Observer
-		this.prefBranch.observe("", this);
+		this.prefBranch.addObserver("", this, false);
 
 		//set user preferences
 		this.initPref();
@@ -85,11 +86,11 @@ var AddDToUnsortBkm = {
 		var contentAreaCtx = document.getElementById("contentAreaContextMenu");
 		contentAreaCtx.removeEventListener("popupshowing", this, false);
 
-		this.prefBranch.ignore("", this);
+		this.prefBranch.removeObserver("", this);
 	},
 
 	initPref: function () {
-		var allPref = this.prefBranch.getChildList("");
+		var allPref = this.prefBranch.getChildList("", {});
 		allPref.forEach(function(aPref) {
 			this.observe(null, "nsPref:changed", aPref);
 		}, this);
