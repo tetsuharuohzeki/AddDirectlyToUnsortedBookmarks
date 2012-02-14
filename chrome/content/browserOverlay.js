@@ -1,3 +1,4 @@
+Components.utils.import("resource://gre/modules/Services.jsm");
 var AddDToUnsortBkm = {
 
 	get bookmarksService () {
@@ -9,12 +10,6 @@ var AddDToUnsortBkm = {
 	get unfiledBookmarksFolder () {
 		delete this.unfiledBookmarksFolder;
 		return this.unfiledBookmarksFolder = this.bookmarksService.unfiledBookmarksFolder;
-	},
-
-	get IOService () {
-		delete this.IOService;
-		return this.IOService = Components.classes["@mozilla.org/network/io-service;1"]
-		                        .getService(Components.interfaces.nsIIOService);
 	},
 
 	//The preference domain of this add-on
@@ -134,7 +129,7 @@ var AddDToUnsortBkm = {
 	},
 
 	saveItem: function AddDToUnsortBkm_saveItem(aURI, aTitle, aIndex) {
-		var uri = this.IOService.newURI(aURI, null, null);
+		var uri = Services.io.newURI(aURI, null, null);
 		if (!aIndex) {
 			aIndex = this.bookmarksService.DEFAULT_INDEX;
 		}
