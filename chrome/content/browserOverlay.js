@@ -24,8 +24,7 @@ var AddDToUnsortBkm = {
 
 	get prefBranch () {
 		delete this.prefBranch;
-		return this.prefBranch =Services.prefs.getBranch(this.PREF_DOMAIN)
-		                        .QueryInterface(Components.interfaces.nsIPrefBranch2);
+		return this.prefBranch =Services.prefs.getBranch(this.PREF_DOMAIN);
 	},
 
 	handleEvent: function (aEvent) {
