@@ -6,7 +6,7 @@
  * @version     20100620.1
  */
 
-var EXPORTED_SYMBOLS = ["Preferences", "Observers", "StringBundle"];
+var EXPORTED_SYMBOLS = ["Preferences"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 
