@@ -99,13 +99,17 @@ var AddDToUnsortBkm = {
 	},
 
 	ctrlContentCtxMenu: function AddDToUnsortBkm_ctrlContentCtxMenu() {
-		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-savePage",
-		                      !(gContextMenu.isContentSelected || gContextMenu.onTextInput || gContextMenu.onLink ||
-		                        gContextMenu.onImage || gContextMenu.onVideo || gContextMenu.onAudio) &&
-		                      this.PREF.content_savePage);
-		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-saveLink",
-		                      gContextMenu.onLink && !gContextMenu.onMailtoLink &&
-		                      this.PREF.content_saveLink);
+		let isContntSavePage = this.PREF.content_savePage && 
+		                        !(
+		                          gContextMenu.isContentSelected || gContextMenu.onTextInput || 
+		                          gContextMenu.onLink || gContextMenu.onImage || 
+		                          gContextMenu.onVideo || gContextMenu.onAudio
+		                        );
+		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-savePage", isContntSavePage);
+		
+		let isContentSaveLink = this.PREF.content_saveLink && 
+		                         (gContextMenu.onLink && !gContextMenu.onMailtoLink);
+		gContextMenu.showItem("AddDToUnsortBkm-contentCtx-saveLink", isContentSaveLink);
 	},
 
 	saveLink: function AddDToUnsortBkm_saveLink() {
