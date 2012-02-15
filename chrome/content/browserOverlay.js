@@ -125,8 +125,9 @@ var AddDToUnsortBkm = {
 	},
 
 	saveTab: function AddDToUnsortBkm_saveTab(aTab) {
-		var URI = aTab.linkedBrowser.currentURI.spec
-		var title = aTab.linkedBrowser.contentDocument.title || aTab.getAttribute("label");
+		let browser = aTab.linkedBrowser;
+		var URI     = browser.currentURI.spec;
+		var title   = browser.contentDocument.title || aTab.getAttribute("label");
 		this.saveItem(URI, title);
 	},
 
